@@ -1,13 +1,19 @@
 package hosts
 
 import (
-	"os"
-	"runtime"
+	"fmt"
+	"io/ioutil"
+	"path/filepath"
+	"testing"
 )
 
-func GetUserHomeDir() string {
-	if runtime.GOOS == "windows" {
-		return os.Getenv("USERPROFILE")
-	}
-	return os.Getenv("HOME")
+func TestGetUserHomeDir(t *testing.T) {
+	fmt.Println(GetUserHomeDir())
+}
+//system32\drivers\etc
+func TestGetWinSystemDir(t *testing.T) {
+
+	pp := filepath.Join(getWinSystemDir(),"system32","drivers","etc","hosts")
+	body, _ := ioutil.ReadFile(pp)
+	fmt.Println(string(body))
 }

@@ -1,5 +1,7 @@
 package main
 
+import "github.com/w-milfoil/hosts"
+
 func main() {
-	$END$
+	hosts.Open()
 }
